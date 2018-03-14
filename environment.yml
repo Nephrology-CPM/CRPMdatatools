@@ -1,0 +1,8 @@
+name: CRPMdatatools
+channels: r
+dependencies:
+  - r
+  - r-xlsx
+  - r-testthat
+  - r-devtools
+  - r-roxygen2

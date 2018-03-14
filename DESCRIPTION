@@ -1,0 +1,15 @@
+Package: CRPMdatatools
+Title: Data Tools for the Center of Renal Precision Medicine
+Version: 0.0.0.9000
+Authors@R: person("Daniel", "Montemayor", email = "montemayord2@uthscsa.edu", role = c("aut", "cre"))
+URL: https://dmontemayor.github.io/cleanCRPMdata/
+BugReports: https://github.com/dmontemayor/cleanCRPMdata/issues
+Description: A collection of project specific tools developed to treat raw data
+    generated and used by the Center for Precision Medicine at the University
+    of Texas Health Science Center San Antonio (CRPM UTHSCSA).
+Depends: R (>= 3.4.3)
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+Suggests: testthat
+RoxygenNote: 6.0.1
