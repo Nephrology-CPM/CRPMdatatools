@@ -4,7 +4,7 @@
   We follow the directions found in [this](http://r-pkgs.had.co.nz/intro.html) guide.
 1. Initiate project metadata in R.
 ```R
-> devtools::create("cleanCRPMdata")
+> devtools::create("CRPMdatatools")
 ```
 will create a project directory with
   + A stripped down `DESCRIPTION` file.
@@ -29,7 +29,7 @@ $ conda env update
 ```
 1. Activate the environment
 ```sh
-$ source activate cleanCRPMdata
+$ source activate CRPMdatatools
 ```
 1. Change to the project directory
 1. Edit files
