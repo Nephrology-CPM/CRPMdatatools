@@ -15,10 +15,6 @@ A dataframe with the contents of the batch file.
 \description{
 Parse a batch file and return the data as dataframe.
 }
-\examples{
-load_batch_file(file="somebatchfile.xlsx")
-
-}
 \author{
 Daniel Montemayor, \email{montemayord2@uthscsa.edu}
 }

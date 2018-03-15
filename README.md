@@ -6,6 +6,12 @@ This project is based on a
 [standard install of anaconda](https://docs.anaconda.com/anaconda/install/).
 Please install anaconda before proceeding.
 
+Just in case you are not already there,
+open a terminal and navigate to this project directory
+```sh
+$ cd /path/to/this/project/CRPMdatatools
+```
+
 Create a virtual environment from the provided `environtment.yml` file.
 *(Optional: For more details refer to [this usefull guide](https://uoa-eresearch.github.io/eresearch-cookbook/recipe/2014/11/20/conda/)
 and [this other guide](https://samrelton.wordpress.com/2015/07/02/rconda/).)*
