@@ -1,5 +1,6 @@
 name: CRPMdatatools
-channels: r
+channels:
+  - r
 dependencies:
   - r
   - r-xlsx
