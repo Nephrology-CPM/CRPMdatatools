@@ -1,28 +1,41 @@
 #' build gcms collect table
 #'
-#' @param  The dataframe result of load_batch_file
+#' @param df The dataframe result of load_batch_file
+#' @param config the analysis configuration such as result of init_batch_config
 #' @return A dataframe with gcms data collected from batch file.
 #'
 #' @export
 #' @author Daniel Montemayor, \email{montemayord2@uthscsa.edu}
-get_collect_table <- function(df){
+get_collect_table <- function(df,config){
 
-  #get sample IDs
-  sampleIDs <- get_sampleIDs(df)
+  #check for data files with names that contain any of the config sample IDs
+  keeprows <- apply(array(df$Data.File),1,
+                function(y){
+                  any(
+                    apply(config$sampleIDs,1,
+                      function(x){grepl(x,y)}
+                    )
+                  )
+                }
+              )
 
-  #get metabolite names
-  metabolite_names <- get_metabolite_names(df)
+  #remove excluded data files
+  df<-df[keeprows,]
 
-  #instantiate output
-  output <- data.frame(matrix(ncol=length(sampleIDs),nrow=length(metabolite_names)))
+  #clean remaining data file names into sampleIDs
+  df$Data.File <- clean_sampleIDs(df)
 
-  #assign row and column names
-  rownames(output) <- metabolite_names
-  colnames(output) <- sampleIDs
+  #keep Peak Names(metabolites) that appear in configuration compounds
+  df<-df[df$Peak.Name%in%config$compounds,]
 
-  #loop over elements in df
-  #get metabolite name and sample id
-  #find corresponding matrix element in output
+  #reshape df to display Amount of Peak.Name(metabolite) and Data.File(sample id)
+  output <- reshape2::dcast(data = df, formula = df$Peak.Name~df$Data.File, value.var = "Amt")
+
+  #correct 1st column name from df$Peak.Name to "CID" (compound identification)
+  colnames(output)[1]="CID"
+
+  #save output
+  write.csv(output, file = "batch_collect.csv")
 
   return(output)
 }

@@ -1,5 +1,6 @@
 #' Find metabolites in gcms batch dataframe.
 #'
+#' @param  The dataframe result of load_batch_file
 #' @return An array with the names of unique metabolites found.
 #'
 #' @export
