@@ -6,5 +6,13 @@
 #' @export
 #' @author Daniel Montemayor, \email{montemayord2@uthscsa.edu}
 load_batch_file <- function(file){
-    xlsx::read.xlsx(file,sheetIndex=1,header=TRUE)
+    #load file as dataframe
+    df <- xlsx::read.xlsx(file,sheetIndex=1,header=FALSE)
+
+    #find first row with cols 4 =  "Peak Name
+    startRow <- which(xlsx::read.xlsx(file,sheetIndex=1,header=FALSE)[,4]==
+                      "Peak Name")+1
+
+    #read xlsx and use labels in startRow as variable names
+    xlsx::read.xlsx(file,sheetIndex=1,startRow=startRow,header=TRUE)
 }
